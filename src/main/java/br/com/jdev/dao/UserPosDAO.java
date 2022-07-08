@@ -1,6 +1,7 @@
 package br.com.jdev.dao;
 
 import br.com.jdev.conexaojdbc.SingleConnection;
+import br.com.jdev.model.Telefone;
 import br.com.jdev.model.Userposjava;
 
 import java.sql.Connection;
@@ -100,6 +101,29 @@ public class UserPosDAO {
             connection.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void salvarTelefone(Telefone telefone ) {
+
+        try {
+
+            String sql = "INSERT INTO public.telefoneuser(numero, tipo, usuariopessoa) VALUES (?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, telefone.getNumero());
+            statement.setString(2, telefone.getTipo());
+            statement.setLong(3, telefone.getUsuario());
+            statement.execute();
+            connection.commit();
+
+        } catch (Exception e) {
+            try {
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            System.out.println(e.getMessage());
         }
     }
 

@@ -6,7 +6,7 @@ public class Telefone {
     private String numero;
     private String tipo;
 
-    private String usuario;
+    private Long usuario;
 
     public Long getId() {
         return id;
@@ -32,11 +32,11 @@ public class Telefone {
         this.tipo = tipo;
     }
 
-    public String getUsuario() {
+    public long getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
 }
