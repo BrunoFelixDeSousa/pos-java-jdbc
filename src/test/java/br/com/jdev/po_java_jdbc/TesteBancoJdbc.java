@@ -1,6 +1,7 @@
 package br.com.jdev.po_java_jdbc;
 
 import br.com.jdev.dao.UserPosDAO;
+import br.com.jdev.model.Telefone;
 import br.com.jdev.model.Userposjava;
 import org.junit.Test;
 
@@ -73,7 +74,17 @@ public class TesteBancoJdbc {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void TesteInsertTelefone() {
+        Telefone telefone = new Telefone();
+        UserPosDAO dao = new UserPosDAO();
 
+        telefone.setNumero("9146217-6554");
+        telefone.setTipo("celular");
+        telefone.setUsuario(5L);
+
+        dao.salvarTelefone(telefone);
     }
 }

@@ -1,6 +1,7 @@
 package br.com.jdev.dao;
 
 import br.com.jdev.conexaojdbc.SingleConnection;
+import br.com.jdev.model.BeanUSerFone;
 import br.com.jdev.model.Telefone;
 import br.com.jdev.model.Userposjava;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class UserPosDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     public UserPosDAO() {
         connection = SingleConnection.getConnection();
@@ -38,7 +39,7 @@ public class UserPosDAO {
     }
 
     public List<Userposjava> listarUsuarios() throws SQLException {
-        List<Userposjava> lista = new ArrayList<Userposjava>();
+        List<Userposjava> lista = new ArrayList<>();
         String sql = "select * from userposjava";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -125,6 +126,11 @@ public class UserPosDAO {
             }
             System.out.println(e.getMessage());
         }
+    }
+
+    public List<BeanUSerFone> listaUserFone( Long id) {
+
+        return null;
     }
 
 
