@@ -1,6 +1,7 @@
 package br.com.jdev.po_java_jdbc;
 
 import br.com.jdev.dao.UserPosDAO;
+import br.com.jdev.model.BeanUSerFone;
 import br.com.jdev.model.Telefone;
 import br.com.jdev.model.Userposjava;
 import org.junit.Test;
@@ -86,5 +87,19 @@ public class TesteBancoJdbc {
         telefone.setUsuario(5L);
 
         dao.salvarTelefone(telefone);
+    }
+
+    @Test
+    public void testeCarregaFonesUser() {
+        UserPosDAO dao = new UserPosDAO();
+
+        List<BeanUSerFone> beanUserFone = dao.listaUserFone(16L);
+
+        for (BeanUSerFone beanUserFone2 : beanUserFone) {
+
+            System.out.println(beanUserFone2);
+            System.out.println("--------------------");
+
+        }
     }
 }

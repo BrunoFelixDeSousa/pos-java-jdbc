@@ -128,9 +128,32 @@ public class UserPosDAO {
         }
     }
 
-    public List<BeanUSerFone> listaUserFone( Long id) {
+    public List<BeanUSerFone> listaUserFone( Long idUser) {
+        List<BeanUSerFone> beanUserFone = new ArrayList<>();
 
-        return null;
+        String sql = "select nome, numero, email from telefoneuser as fone ";
+        sql += " inner join userposjava as userp ";
+        sql += " on fone.usuariopessoa = userp.id ";
+        sql += " where userp.id = " + idUser;
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while( resultSet.next() ) {
+                BeanUSerFone userFone = new BeanUSerFone();
+                userFone.setEmail( resultSet.getString("email") );
+                userFone.setNome( resultSet.getString("nome") );
+                userFone.setNumero( resultSet.getString("numero") );
+
+                beanUserFone.add(userFone);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return beanUserFone;
     }
 
 
