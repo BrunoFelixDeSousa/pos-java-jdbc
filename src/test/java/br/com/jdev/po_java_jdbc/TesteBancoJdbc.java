@@ -93,7 +93,7 @@ public class TesteBancoJdbc {
     public void testeCarregaFonesUser() {
         UserPosDAO dao = new UserPosDAO();
 
-        List<BeanUSerFone> beanUserFone = dao.listaUserFone(16L);
+        List<BeanUSerFone> beanUserFone = dao.listaUserFone(5L);
 
         for (BeanUSerFone beanUserFone2 : beanUserFone) {
 
